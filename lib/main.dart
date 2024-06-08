@@ -3,6 +3,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_basics/Widgets/alert.dart";
 import "package:flutter_basics/Widgets/animatedtext.dart";
+import "package:flutter_basics/Widgets/bottomnav.dart";
 import "package:flutter_basics/Widgets/bottomsheet.dart";
 import "package:flutter_basics/Widgets/buttons.dart";
 import "package:flutter_basics/Widgets/containersized.dart";
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const AnimatedTextWidget(),
+      home: const BottomNavWidget(),
     );
   }
 }
