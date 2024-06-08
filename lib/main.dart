@@ -5,6 +5,7 @@ import "package:flutter_basics/Widgets/buttons.dart";
 import "package:flutter_basics/Widgets/containersized.dart";
 import "package:flutter_basics/Widgets/dismissible.dart";
 import "package:flutter_basics/Widgets/drawer.dart";
+import "package:flutter_basics/Widgets/image.dart";
 import "package:flutter_basics/Widgets/list_grid.dart";
 import "package:flutter_basics/Widgets/rowscolumns.dart";
 import "package:flutter_basics/Widgets/snackbar.dart";
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const DrawerWidget(),
+      home: const ImageWidget(),
     );
   }
 }
