@@ -14,6 +14,7 @@ import "package:flutter_basics/Widgets/form.dart";
 import "package:flutter_basics/Widgets/image.dart";
 import "package:flutter_basics/Widgets/imagepicker.dart";
 import "package:flutter_basics/Widgets/list_grid.dart";
+import "package:flutter_basics/Widgets/location.dart";
 import "package:flutter_basics/Widgets/rowscolumns.dart";
 import "package:flutter_basics/Widgets/snackbar.dart";
 import "package:flutter_basics/Widgets/stack.dart";
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const ImagePickerWidget(),
+      home: const LocationWidget(),
     );
   }
 }
