@@ -1,6 +1,7 @@
 // ignore_for_file: unused_import
 
 import "package:flutter/material.dart";
+import "package:flutter_basics/Widgets/alert.dart";
 import "package:flutter_basics/Widgets/buttons.dart";
 import "package:flutter_basics/Widgets/containersized.dart";
 import "package:flutter_basics/Widgets/dismissible.dart";
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const ImageWidget(),
+      home: const AlertWidget(),
     );
   }
 }
