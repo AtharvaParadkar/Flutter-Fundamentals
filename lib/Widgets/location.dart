@@ -18,7 +18,7 @@ class _LocationWidgetState extends State<LocationWidget> {
     //~ Will check if user has granted location permission or not
     LocationPermission permission;
     //~ To get only one of them
-    String latitude,longitude;
+    String latitude;
 
     //~ chcek weather the service is enabled or not
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
