@@ -5,8 +5,6 @@ class SimpleProfileUI extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var h = MediaQuery.of(context).size.height,
-        w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile UI'),
