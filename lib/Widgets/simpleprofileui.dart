@@ -24,26 +24,26 @@ class SimpleProfileUI extends StatelessWidget {
           SizedBox(width: 20),
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
-          SizedBox(height: 10),
-          Center(
+          const SizedBox(height: 10),
+          const Center(
             child: CircleAvatar(
               radius: 55,
               backgroundImage: AssetImage('assets/images/ana_de_armas.jpg'),
             ),
           ),
-          SizedBox(height: 10),
-          Text(
+          const SizedBox(height: 10),
+          const Text(
             'Atharva Paradkar',
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
-          Text(
+          const Text(
             'CEO & Founder',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
           ),
-          SizedBox(height: 30),
-          Row(
+          const SizedBox(height: 30),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(
@@ -84,12 +84,18 @@ class SimpleProfileUI extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 40),
+          const SizedBox(height: 40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Icon(Icons.grid_view_sharp,size: 30),
-              Icon(Icons.view_list_rounded,size: 30)
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.grid_view_sharp),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.view_list_sharp),
+              ),
             ],
           )
         ],
