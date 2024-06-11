@@ -13,6 +13,7 @@ import "package:flutter_basics/Widgets/dropdown.dart";
 import "package:flutter_basics/Widgets/form.dart";
 import "package:flutter_basics/Widgets/image.dart";
 import "package:flutter_basics/Widgets/imagepicker.dart";
+import "package:flutter_basics/Widgets/instaui.dart";
 import "package:flutter_basics/Widgets/list_grid.dart";
 import "package:flutter_basics/Widgets/location.dart";
 import "package:flutter_basics/Widgets/rowscolumns.dart";
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const SimpleUI(),
+      home: const InstaUI(),
     );
   }
 }
