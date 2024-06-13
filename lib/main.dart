@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import
 
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter_basics/Widgets/alert.dart";
 import "package:flutter_basics/Widgets/animatedtext.dart";
@@ -21,8 +22,16 @@ import "package:flutter_basics/Widgets/simpleui.dart";
 import "package:flutter_basics/Widgets/snackbar.dart";
 import "package:flutter_basics/Widgets/stack.dart";
 import "package:flutter_basics/Widgets/tabbar.dart";
+import "package:flutter_basics/firebase_options.dart";
 import "package:flutter_basics/for_loop.dart";
-void main() => runApp(const MyApp());
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
