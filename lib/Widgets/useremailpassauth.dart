@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_basics/functions/authfunctions.dart";
 
 class UserEmailPassAuth extends StatefulWidget {
   const UserEmailPassAuth({super.key});
@@ -10,6 +11,7 @@ class UserEmailPassAuth extends StatefulWidget {
 class _UserEmailAuthState extends State<UserEmailPassAuth> {
   final _formskey = GlobalKey<FormState>();
   bool isLogedin = false;
+  String username = '', email = '', password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,15 @@ class _UserEmailAuthState extends State<UserEmailPassAuth> {
                       decoration: InputDecoration(hintText: 'Enter Username'),
                       validator: (value) {
                         if (value.toString().isEmpty) {
-                          return "Enter valid Username";
+                          return "Enter Username";
                         } else {
                           return null;
                         }
+                      },
+                      onSaved: (value) {
+                        setState(() {
+                          username = value!;
+                        });
                       },
                     )
                   : Container(),
@@ -49,6 +56,11 @@ class _UserEmailAuthState extends State<UserEmailPassAuth> {
                     return null;
                   }
                 },
+                onSaved: (value) {
+                  setState(() {
+                    email = value!;
+                  });
+                },
               ),
               TextFormField(
                 obscureText: true,
@@ -56,10 +68,15 @@ class _UserEmailAuthState extends State<UserEmailPassAuth> {
                 decoration: InputDecoration(hintText: 'Enter Password'),
                 validator: (value) {
                   if (value.toString().isEmpty || value.toString().length < 9) {
-                    return "Enter valid Password > = 8";
+                    return "Enter Password > = 8";
                   } else {
                     return null;
                   }
+                },
+                onSaved: (value) {
+                  setState(() {
+                    password = value!;
+                  });
                 },
               ),
               SizedBox(height: 20),
@@ -67,7 +84,14 @@ class _UserEmailAuthState extends State<UserEmailPassAuth> {
                 width: double.infinity,
                 height: 40,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formskey.currentState!.validate()) {
+                      _formskey.currentState!.save();
+                      isLogedin
+                          ? login(email, password)
+                          : signup(email, password);
+                    }
+                  },
                   child: isLogedin ? Text('Login') : Text('Signup'),
                 ),
               ),

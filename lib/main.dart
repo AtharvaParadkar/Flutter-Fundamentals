@@ -28,9 +28,7 @@ import "package:flutter_basics/for_loop.dart";
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
