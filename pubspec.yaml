@@ -43,6 +43,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.0
   firebase_core: ^3.1.0
+  firebase_auth: ^5.1.0
   
 
 dev_dependencies:

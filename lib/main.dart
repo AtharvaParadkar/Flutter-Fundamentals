@@ -22,6 +22,7 @@ import "package:flutter_basics/Widgets/simpleui.dart";
 import "package:flutter_basics/Widgets/snackbar.dart";
 import "package:flutter_basics/Widgets/stack.dart";
 import "package:flutter_basics/Widgets/tabbar.dart";
+import "package:flutter_basics/Widgets/useremailpassauth.dart";
 import "package:flutter_basics/firebase_options.dart";
 import "package:flutter_basics/for_loop.dart";
 
@@ -45,7 +46,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const InstaUI(),
+      home: const UserEmailPassAuth(),
     );
   }
 }
