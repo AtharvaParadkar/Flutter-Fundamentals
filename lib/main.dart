@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const UserEmailPassAuth(),
+      home: const TabbarWidget(),
     );
   }
 }

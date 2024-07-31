@@ -43,45 +43,12 @@ class SimpleProfileUI extends StatelessWidget {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
           ),
           const SizedBox(height: 30),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Column(
-                children: [
-                  Text(
-                    '23',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Created',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    '398',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Attended',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(
-                    '936',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Followers',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
+              columnText('23', 'Created'),
+              columnText('398', 'Attended'),
+              columnText('936', 'Followers'),              
             ],
           ),
           const SizedBox(height: 40),
@@ -102,4 +69,19 @@ class SimpleProfileUI extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget columnText(String text1, text2) {
+  return Column(
+    children: [
+      Text(
+        text1,
+        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+      ),
+      Text(
+        text2,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+      ),
+    ],
+  );
 }
