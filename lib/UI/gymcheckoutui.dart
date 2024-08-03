@@ -3,6 +3,7 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/UI/modal.dart/gymuimodal.dart';
 
 class GymUI extends StatefulWidget {
   const GymUI({super.key});
@@ -12,15 +13,31 @@ class GymUI extends StatefulWidget {
 }
 
 class _GymUIState extends State<GymUI> {
+  final gym = Gymui(
+    fee: 120.000,
+    pacname: 'Package Name Title 1',
+    loc: 'Club Name, Salmiya Block 1',
+    belt: 'Black',
+    classcategory: 'Class Category1',
+    duration: 30,
+    noclasspac: 40,
+    classcategoryno: 12,
+    subtotal: 120.000,
+    discount: 20.000,
+    total: 120.000,
+  );
+
   String _selectedOwnership = 'My Self, 29 Years';
+
   final TextEditingController _promoCodeController = TextEditingController();
   String? _selectedPaymentMethod;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Checkout'),
-        backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+        backgroundColor: Color.fromARGB(255, 255, 0, 0),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -71,57 +88,112 @@ class _GymUIState extends State<GymUI> {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-                child: const Padding(
-                  padding: EdgeInsets.all(16),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Package Name Title 1',
-                        style: TextStyle(
+                        gym.pacname,
+                        style: const TextStyle(
                             fontSize: 25, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
-                      Text(
+                      const SizedBox(height: 10),
+                      const Text(
                         'Subscription Fee',
                         style: TextStyle(fontSize: 18),
                       ),
-                      Text('120.000 KWD',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 255),
-                              fontSize: 18)),
-                      SizedBox(height: 12),
+                      ShaderMask(
+                        shaderCallback: (Rect bounds) {
+                          return const LinearGradient(
+                            colors: [
+                              Color.fromARGB(255, 160, 37, 249),
+                              Color.fromARGB(255, 10, 163, 234),
+                              Color.fromARGB(255, 0, 0, 255),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ).createShader(bounds);
+                        },
+                        child: Text(
+                          '${gym.fee.toString()} KWD',
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
                       Row(
                         children: [
-                          Icon(Icons.location_on,
-                              color: Color.fromARGB(255, 0, 0, 255)),
-                          SizedBox(width: 6),
-                          Text('Club Name, Salmiya Block 10',
-                              style: TextStyle(fontSize: 18))
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 160, 37, 249),
+                                  Color.fromARGB(255, 10, 163, 234),
+                                  Color.fromARGB(255, 0, 0, 255),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child: const Icon(
+                              Icons.location_on,
+                            ),
+                          ),
+                          const SizedBox(width: 6),
+                          Text(gym.loc, style: const TextStyle(fontSize: 18))
                         ],
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(Icons.calendar_month,
-                              color: Color.fromARGB(255, 0, 0, 255)),
-                          SizedBox(width: 10),
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 160, 37, 249),
+                                  Color.fromARGB(255, 10, 163, 234),
+                                  Color.fromARGB(255, 0, 0, 255),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child: const Icon(Icons.calendar_month),
+                          ),
+                          const SizedBox(width: 10),
                           Column(
                             children: [
-                              Text('Duration', style: TextStyle(fontSize: 18)),
-                              Text('30 Days', style: TextStyle(fontSize: 18)),
+                              const Text('Duration',
+                                  style: TextStyle(fontSize: 18)),
+                              Text('${gym.duration} Days',
+                                  style: const TextStyle(fontSize: 18)),
                             ],
                           ),
-                          Spacer(),
-                          Icon(Icons.sports_martial_arts_rounded,
-                              color: Color.fromARGB(255, 0, 0, 255)),
-                          SizedBox(width: 10),
+                          const Spacer(),
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 160, 37, 249),
+                                  Color.fromARGB(255, 10, 163, 234),
+                                  Color.fromARGB(255, 0, 0, 255),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child:
+                                const Icon(Icons.sports_martial_arts_rounded),
+                          ),
+                          const SizedBox(width: 10),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Belt', style: TextStyle(fontSize: 18)),
-                              Text('Black', style: TextStyle(fontSize: 18)),
+                              const Text('Belt',
+                                  style: TextStyle(fontSize: 18)),
+                              Text(gym.belt,
+                                  style: const TextStyle(fontSize: 18)),
                             ],
                           ),
                         ],
@@ -137,41 +209,57 @@ class _GymUIState extends State<GymUI> {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-                child: const Padding(
-                  padding: EdgeInsets.all(16),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.watch_outlined,
-                              color: Color.fromARGB(255, 0, 0, 255)),
-                          SizedBox(width: 6),
-                          Text('40',
-                              style: TextStyle(
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 160, 37, 249),
+                                  Color.fromARGB(255, 10, 163, 234),
+                                  Color.fromARGB(255, 0, 0, 255),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child: const Icon(Icons.watch_outlined),
+                          ),
+                          const SizedBox(width: 6),
+                          Text(gym.noclasspac.toString(),
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
-                          Text(' Classes in packages!',
+                          const Text(' Classes in packages!',
                               style: TextStyle(fontSize: 20)),
                         ],
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
-                          Text('Class Category',
-                              style: TextStyle(fontSize: 18)),
-                          Spacer(),
-                          Text('12',
-                              style: TextStyle(
+                          Text(gym.classcategory,
+                              style: const TextStyle(fontSize: 18)),
+                          const Spacer(),
+                          Text(gym.classcategoryno.toString(),
+                              style: const TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold))
                         ],
                       ),
                       Row(
                         children: [
-                          Text('Class Category',
-                              style: TextStyle(fontSize: 18)),
-                          Spacer(),
-                          Text('12',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold))
+                          Text(
+                            gym.classcategory,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          const Spacer(),
+                          Text(
+                            gym.classcategoryno.toString(),
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          )
                         ],
                       ),
                     ],
@@ -325,57 +413,79 @@ class _GymUIState extends State<GymUI> {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
-                child: const Padding(
-                  padding: EdgeInsets.all(16),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Payment Details',
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Sub Total',
                             style: TextStyle(fontSize: 18),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Text(
-                            '120.000 KWD',
-                            style: TextStyle(fontSize: 18),
+                            '${gym.subtotal.toString()} KWD',
+                            style: const TextStyle(fontSize: 18),
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Discount',
                             style: TextStyle(fontSize: 18),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Text(
-                            '0.000 KWD',
-                            style: TextStyle(fontSize: 18),
+                            '${gym.discount.toString()} KWD',
+                            style: const TextStyle(fontSize: 18),
                           ),
                         ],
                       ),
                       Row(
                         children: [
-                          Text(
-                            'Total',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 0, 0, 255)),
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 160, 37, 249),
+                                  Color.fromARGB(255, 10, 163, 234),
+                                  Color.fromARGB(255, 0, 0, 255),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child: const Text(
+                              'Total',
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
-                          Spacer(),
-                          Text(
-                            '120.000 KWD',
-                            style: TextStyle(
-                                fontSize: 18,
-                                color: Color.fromARGB(255, 0, 0, 255)),
+                          const Spacer(),
+                          ShaderMask(
+                            shaderCallback: (Rect bounds) {
+                              return const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 160, 37, 249),
+                                  Color.fromARGB(255, 10, 163, 234),
+                                  Color.fromARGB(255, 0, 0, 255),
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ).createShader(bounds);
+                            },
+                            child: Text(
+                              '${gym.total.toString()} KWD',
+                              style: const TextStyle(fontSize: 18),
+                            ),
                           ),
                         ],
                       ),
