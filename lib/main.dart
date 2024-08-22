@@ -20,6 +20,7 @@ import "package:flutter_basics/Widgets/list_grid.dart";
 import "package:flutter_basics/Widgets/location.dart";
 import "package:flutter_basics/Widgets/opacityanimation.dart";
 import "package:flutter_basics/Widgets/progressbar.dart";
+import "package:flutter_basics/Widgets/qrcodescanner.dart";
 import "package:flutter_basics/Widgets/radio_checkbox.dart";
 import "package:flutter_basics/Widgets/rowscolumns.dart";
 import "package:flutter_basics/UI/simpleui.dart";
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const ProgressBar(),
+      home: const QRCodeScanner(),
     );
   }
 }

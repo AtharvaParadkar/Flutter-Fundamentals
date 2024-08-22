@@ -46,7 +46,8 @@ dependencies:
   firebase_auth: ^5.1.0
   another_carousel_pro: ^1.0.2
   carousel_slider: ^4.2.1
-  
+  url_launcher: ^6.3.0
+  qr_code_scanner: ^1.0.1
 
 dev_dependencies:
   flutter_test:
