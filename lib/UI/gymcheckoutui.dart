@@ -1,7 +1,6 @@
 // ignore_for_file: unused_import
 
 import 'package:another_carousel_pro/another_carousel_pro.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/UI/modal.dart/gymuimodal.dart';
 
@@ -63,24 +62,6 @@ class _GymUIState extends State<GymUI> {
                 indicatorBgPadding: 10,
                 dotBgColor: const Color.fromARGB(0, 0, 0, 0),
               ),
-              // CarouselSlider(
-              //   items: [
-              //     Image.asset('assets/images/run.png', fit: BoxFit.fill),
-              //     Image.asset('assets/images/run3.jpg', fit: BoxFit.fill),
-              //     Image.asset('assets/images/run4.jpg', fit: BoxFit.fitHeight),
-              //     Image.asset('assets/images/run2.jpeg', fit: BoxFit.cover),
-              //   ],
-              //   options: CarouselOptions(
-              //     height: 200,
-              //     enlargeCenterPage: true,
-              //     autoPlay: true,
-              //     aspectRatio: 16 / 9,
-              //     autoPlayCurve: Curves.fastOutSlowIn,
-              //     enableInfiniteScroll: true,
-              //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
-              //     viewportFraction: 0.8,
-              //   ),
-              // ),
             ),
             Padding(
               padding: const EdgeInsets.all(8),
