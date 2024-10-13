@@ -29,6 +29,7 @@ import "package:flutter_basics/UI/simpleui.dart";
 import "package:flutter_basics/Widgets/snackbar.dart";
 import "package:flutter_basics/Widgets/stack.dart";
 import "package:flutter_basics/Widgets/tabbar.dart";
+import "package:flutter_basics/Widgets/themeSwitcher.dart";
 import "package:flutter_basics/Widgets/useremailpassauth.dart";
 import "package:flutter_basics/firebase_options.dart";
 import "package:flutter_basics/for_loop.dart";
@@ -73,16 +74,33 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  ThemeMode themeMode = ThemeMode.system;
+
+  void _toggleTheme(bool isDarkMode) {
+    setState(() {
+      themeMode = isDarkMode ? ThemeMode.dark : ThemeMode.light;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        primaryColor: Colors.blue,
+        brightness: Brightness.light,
+      ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
         primaryColor: const Color.fromARGB(255, 0, 0, 255),
         brightness: Brightness.dark,
       ),
-      home: const GlowingAvatar(),
+      themeMode: themeMode,
+      home: Themeswitcher(
+        onThemeChanged: _toggleTheme,
+        isDarkMode: themeMode == ThemeMode.dark,
+      ),
     );
   }
 }
