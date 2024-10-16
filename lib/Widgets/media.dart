@@ -2,6 +2,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/Widgets/youtubeplayer.dart';
 import 'package:gap/gap.dart';
 import 'package:video_player/video_player.dart';
 
@@ -19,6 +20,8 @@ class MediaPlayer extends StatelessWidget {
             MusicPlayer(),
             Gap(30),
             VideoPlayerWidget(),
+            Gap(30),
+            YouTubeVideoPlayer(),
           ],
         ),
       ),
