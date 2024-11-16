@@ -9,6 +9,7 @@ import "package:flutter_basics/Widgets/animatedtext.dart";
 import "package:flutter_basics/Widgets/bottomnav.dart";
 import "package:flutter_basics/Widgets/bottomsheet.dart";
 import "package:flutter_basics/Widgets/buttons.dart";
+import "package:flutter_basics/Widgets/concentric_transition_page.dart";
 import "package:flutter_basics/Widgets/containersized.dart";
 import "package:flutter_basics/Widgets/dismissible.dart";
 import "package:flutter_basics/Widgets/drawer.dart";
@@ -97,10 +98,7 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
       ),
       themeMode: themeMode,
-      home: Themeswitcher(
-        onThemeChanged: _toggleTheme,
-        isDarkMode: themeMode == ThemeMode.dark,
-      ),
+      home: ConcentricTransitionPage(),
     );
   }
 }
