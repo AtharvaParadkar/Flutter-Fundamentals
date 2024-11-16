@@ -1,40 +1,7 @@
-// ignore_for_file: unused_import
-
 import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:flutter_basics/UI/gymcheckoutui.dart";
-import "package:flutter_basics/Widgets/alert.dart";
-import "package:flutter_basics/Widgets/animatedtext.dart";
-import "package:flutter_basics/Widgets/bottomnav.dart";
-import "package:flutter_basics/Widgets/bottomsheet.dart";
-import "package:flutter_basics/Widgets/buttons.dart";
-import "package:flutter_basics/Widgets/concentric_transition_page.dart";
-import "package:flutter_basics/Widgets/containersized.dart";
-import "package:flutter_basics/Widgets/dismissible.dart";
-import "package:flutter_basics/Widgets/drawer.dart";
-import "package:flutter_basics/Widgets/dropdown.dart";
-import "package:flutter_basics/Widgets/form.dart";
-import "package:flutter_basics/Widgets/glowing_avatar.dart";
-import "package:flutter_basics/Widgets/image.dart";
-import "package:flutter_basics/Widgets/imagepicker.dart";
-import "package:flutter_basics/UI/instaui.dart";
-import "package:flutter_basics/Widgets/list_grid.dart";
-import "package:flutter_basics/Widgets/location.dart";
-import "package:flutter_basics/Widgets/opacityanimation.dart";
-import "package:flutter_basics/Widgets/progressbar.dart";
-import "package:flutter_basics/Widgets/qrcodescanner.dart";
-import "package:flutter_basics/Widgets/radio_checkbox.dart";
-import "package:flutter_basics/Widgets/rowscolumns.dart";
-import "package:flutter_basics/UI/simpleui.dart";
-import "package:flutter_basics/Widgets/snackbar.dart";
-import "package:flutter_basics/Widgets/stack.dart";
-import "package:flutter_basics/Widgets/tabbar.dart";
-import "package:flutter_basics/Widgets/themeSwitcher.dart";
-import "package:flutter_basics/Widgets/useremailpassauth.dart";
-import "package:flutter_basics/firebase_options.dart";
-import "package:flutter_basics/for_loop.dart";
-import "package:flutter_basics/listmodal/listview.dart";
+import "package:flutter_basics/home.dart";
 import "package:local_auth/local_auth.dart";
 
 void main() async {
@@ -98,7 +65,10 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
       ),
       themeMode: themeMode,
-      home: ConcentricTransitionPage(),
+      home: HomeScreen(
+        onThemeChanged: _toggleTheme,
+        isDarkMode: themeMode == ThemeMode.dark,
+      ),
     );
   }
 }
