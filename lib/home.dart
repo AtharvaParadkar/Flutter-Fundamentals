@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/Widgets/youtubeplayer.dart';
 import 'package:flutter_basics/cardwidget.dart';
 import 'package:flutter_basics/navigation.dart';
 import 'package:flutter_basics/uis.dart';
@@ -95,7 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              cardWidget(context, 'UI\'s', ()=>MyNavigation(context,MyUIs())),
+              cardWidget(
+                  context, 'UI\'s', () => MyNavigation(context, MyUIs())),
               cardWidget(context, 'Container SizedBox',
                   () => MyNavigation(context, ContainerSized())),
               cardWidget(context, 'Rows Columns',
@@ -114,8 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => MyNavigation(context, ImagePickerWidget())),
               cardWidget(
                   context, 'Alert', () => MyNavigation(context, AlertWidget())),
-              cardWidget(
-                  context, 'Drawer', () => MyNavigation(context, DrawerWidget())),
+              cardWidget(context, 'Drawer',
+                  () => MyNavigation(context, DrawerWidget())),
               cardWidget(context, 'Bottom Sheet',
                   () => MyNavigation(context, BottomSheetWidget())),
               cardWidget(context, 'Animated Text',
@@ -150,6 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => MyNavigation(context, QRCodeScanner())),
               cardWidget(context, 'Glowing Avatar',
                   () => MyNavigation(context, GlowingAvatar())),
+              cardWidget(context, 'Youtube Video Player',
+                  () => MyNavigation(context, YouTubeVideoPlayer())),
               cardWidget(context, 'Concentric Transition Page',
                   () => MyNavigation(context, ConcentricTransitionPage())),
             ],
@@ -158,5 +162,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
 }
