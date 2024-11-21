@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/Widgets/stack.dart';
 import 'package:flutter_basics/Widgets/youtubeplayer.dart';
 import 'package:flutter_basics/cardwidget.dart';
 import 'package:flutter_basics/navigation.dart';
@@ -140,6 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => MyNavigation(context, SnackbarWidget())),
               cardWidget(context, 'Tab Bar',
                   () => MyNavigation(context, TabbarWidget())),
+              cardWidget(context, 'Stack',
+                  () => MyNavigation(context, StackWidget())),
               cardWidget(context, 'Geo Location',
                   () => MyNavigation(context, LocationWidget())),
               cardWidget(context, 'List Modal Class',
