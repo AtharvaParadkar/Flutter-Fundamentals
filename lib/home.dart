@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/Widgets/stack.dart';
+import 'package:flutter_basics/Widgets/upi_animation.dart';
 import 'package:flutter_basics/Widgets/youtubeplayer.dart';
 import 'package:flutter_basics/cardwidget.dart';
 import 'package:flutter_basics/navigation.dart';
@@ -159,6 +160,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => MyNavigation(context, YouTubeVideoPlayer())),
               cardWidget(context, 'Concentric Transition Page',
                   () => MyNavigation(context, ConcentricTransitionPage())),
+              cardWidget(context, 'UPI Success Animation',
+                  () => MyNavigation(context, UpiAnimation())),
             ],
           ),
         ),
