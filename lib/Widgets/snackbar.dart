@@ -10,9 +10,8 @@ class SnackbarWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Snackbar',
-          style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: const Color.fromARGB(255, 17, 250, 0),
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: ElevatedButton(

@@ -11,7 +11,10 @@ class InstaUI extends StatelessWidget {
           'paradkar_atharva',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
         ),
-        leading: const Icon(Icons.arrow_back_ios_new_rounded),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios_new_rounded),
+        ),
         actions: const [
           Icon(Icons.notifications_none_rounded, size: 30),
           Icon(Icons.more_vert_rounded, size: 30)
@@ -70,7 +73,7 @@ class InstaUI extends StatelessWidget {
                             ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                  minimumSize: const Size(170, 40),
+                                  minimumSize: const Size(120, 40),
                                   backgroundColor:
                                       const Color.fromARGB(255, 0, 0, 255),
                                   foregroundColor:
@@ -86,8 +89,7 @@ class InstaUI extends StatelessWidget {
                               width: 45,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                    color:
-                                        const Color.fromARGB(255, 0, 0, 255),
+                                    color: const Color.fromARGB(255, 0, 0, 255),
                                     width: 2.5),
                                 shape: BoxShape.circle,
                               ),
@@ -121,8 +123,7 @@ class InstaUI extends StatelessWidget {
                         width: 80,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image:
-                                AssetImage('assets/images/ana_de_armas.jpg'),
+                            image: AssetImage('assets/images/luffy.jpeg'),
                             fit: BoxFit.cover,
                           ),
                           shape: BoxShape.circle,
@@ -135,18 +136,16 @@ class InstaUI extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-                gridDelegate:
-                    const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3),
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
-                          image:
-                              AssetImage('assets/images/ana_de_armas.jpg'),
-                          fit: BoxFit.cover,
-                        ),
+                        image: AssetImage('assets/images/strawpirates.jpeg'),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     margin: const EdgeInsets.all(6),
                     height: 150,
@@ -168,7 +167,7 @@ class InstaUI extends StatelessWidget {
         ),
         Text(
           text2,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/Widgets/expandanimation.dart';
 import 'package:flutter_basics/Widgets/stack.dart';
 import 'package:flutter_basics/Widgets/upi_animation.dart';
 import 'package:flutter_basics/Widgets/youtubeplayer.dart';
@@ -126,6 +127,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => MyNavigation(context, AnimatedTextWidget())),
               cardWidget(context, 'Animation',
                   () => MyNavigation(context, AnimationWidget())),
+              cardWidget(context, 'Expand Animation',
+                  () => MyNavigation(context, ExpandAnimation())),
               cardWidget(context, 'Opacity Animation',
                   () => MyNavigation(context, OpacityAnimation())),
               cardWidget(context, 'Page Route Animation',
@@ -138,8 +141,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   context, 'Form', () => MyNavigation(context, FormWidget())),
               cardWidget(context, 'Firebase Signin/Signup',
                   () => MyNavigation(context, UserEmailPassAuth())),
-              cardWidget(context, 'Snack',
-                  () => MyNavigation(context, SnackbarWidget())),
               cardWidget(context, 'Tab Bar',
                   () => MyNavigation(context, TabbarWidget())),
               cardWidget(context, 'Stack',

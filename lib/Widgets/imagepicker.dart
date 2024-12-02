@@ -24,7 +24,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Image Picker'),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.transparent,
       ),
       body: Center(
         child: Column(

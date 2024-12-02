@@ -24,9 +24,8 @@ class _ListGridState extends State<ListGrid> {
       appBar: AppBar(
         title: const Text(
           "List and Grid",
-          style: TextStyle(color: Colors.black),
         ),
-        backgroundColor: const Color.fromARGB(255, 1, 213, 251),
+        backgroundColor: Colors.transparent,
         elevation: 10,
       ),
       //^ We use ListView.builder when we dont the exact number of items.
