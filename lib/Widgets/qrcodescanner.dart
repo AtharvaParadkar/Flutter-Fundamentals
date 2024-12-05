@@ -94,16 +94,6 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
                     style: TextStyle(fontSize: 18),
                   ),
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text('Launch in Browser'),
-          ),
-          SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text('Launch in App'),
-          ),
           SizedBox(height: 30),
           FutureBuilder<void>(future: _launched, builder: _launchStatus),
         ],
