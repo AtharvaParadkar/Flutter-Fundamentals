@@ -5,6 +5,7 @@ import 'package:flutter_basics/Widgets/upi_animation.dart';
 import 'package:flutter_basics/Widgets/youtubeplayer.dart';
 import 'package:flutter_basics/cardwidget.dart';
 import 'package:flutter_basics/navigation.dart';
+import 'package:flutter_basics/notifier/theme_notifier.dart';
 import 'package:flutter_basics/uis.dart';
 import 'package:flutter_basics/Widgets/alert.dart';
 import 'package:flutter_basics/Widgets/animatedtext.dart';
@@ -33,13 +34,13 @@ import 'package:flutter_basics/Widgets/snackbar.dart';
 import 'package:flutter_basics/Widgets/tabbar.dart';
 import 'package:flutter_basics/Widgets/useremailpassauth.dart';
 import 'package:flutter_basics/listmodal/listview.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen(
-      {super.key, required this.onThemeChanged, required this.isDarkMode});
+      {super.key});
 
-  final Function(bool) onThemeChanged;
-  final bool isDarkMode;
+  
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -47,11 +48,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late bool themeSwitcher;
-  @override
-  void initState() {
-    super.initState();
-    themeSwitcher = widget.isDarkMode;
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   themeSwitcher = widget.isDarkMode;
+  // }
 
   final themeIcon = WidgetStateProperty.resolveWith<Icon?>(
     (Set<WidgetState> states) {
@@ -73,29 +74,27 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         title: Text('Flutter Basics'),
-        backgroundColor: widget.isDarkMode
+        backgroundColor: Provider.of<ThemeNotifier>(context,listen: false).getMode()
             ? const Color.fromARGB(255, 30, 30, 30)
             : const Color.fromARGB(255, 240, 230, 220),
         actions: [
-          Switch(
-            value: widget.isDarkMode,
-            activeColor: Colors.black12,
-            inactiveThumbColor: Colors.white,
-            thumbIcon: themeIcon,
-            onChanged: (bool value) {
-              setState(() {
-                themeSwitcher = value;
-                widget.onThemeChanged(value);
-              });
-            },
+          Consumer<ThemeNotifier>(
+            builder: (BuildContext context, ThemeNotifier notifier, Widget? child) =>
+            Switch(
+              value: notifier.getMode(),
+              activeColor: Colors.black12,
+              inactiveThumbColor: Colors.white,
+              thumbIcon: themeIcon,
+              onChanged: (bool value) =>Provider.of<ThemeNotifier>(context,listen:false).setMode(),
+            ),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: widget.isDarkMode
-              ? const Color.fromARGB(255, 30, 30, 30)
-              : const Color.fromARGB(255, 240, 230, 220),
+          // color: Provider.of<ThemeNotifier>(context,listen: false).getMode()
+          //     ? const Color.fromARGB(255, 30, 30, 30)
+          //     : const Color.fromARGB(255, 240, 230, 220),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

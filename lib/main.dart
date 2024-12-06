@@ -2,7 +2,9 @@ import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_basics/home.dart";
+import "package:flutter_basics/notifier/theme_notifier.dart";
 import "package:local_auth/local_auth.dart";
+import "package:provider/provider.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,32 +44,24 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  ThemeMode themeMode = ThemeMode.system;
-
-  void _toggleTheme(bool isDarkMode) {
-    setState(() {
-      themeMode = isDarkMode ? ThemeMode.dark : ThemeMode.light;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        primaryColor: Colors.blue,
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        primaryColor: const Color.fromARGB(255, 0, 0, 255),
-        brightness: Brightness.dark,
-      ),
-      themeMode: themeMode,
-      home: HomeScreen(
-        onThemeChanged: _toggleTheme,
-        isDarkMode: themeMode == ThemeMode.dark,
+    return ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: Consumer(
+        builder: (BuildContext context, ThemeNotifier notifier, Widget? child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: notifier.getMode()
+                ? ThemeData.dark().copyWith(
+                    scaffoldBackgroundColor:
+                        const Color.fromARGB(255, 30, 30, 30))
+                : ThemeData.light().copyWith(
+                    scaffoldBackgroundColor:
+                        const Color.fromARGB(255, 240, 230, 220)),
+            home: HomeScreen(),
+          );
+        },
       ),
     );
   }
