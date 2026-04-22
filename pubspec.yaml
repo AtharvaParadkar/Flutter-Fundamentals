@@ -24,7 +24,7 @@ dependencies:
   firebase_auth: ^5.1.0
   another_carousel_pro: ^1.0.2
   url_launcher: ^6.3.0
-  qr_code_scanner: ^1.0.1
+  mobile_scanner: ^6.0.11
   avatar_glow: ^3.0.1
   local_auth: ^2.3.0
   gap: ^3.0.1
