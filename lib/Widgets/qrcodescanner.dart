@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class QRCodeScanner extends StatefulWidget {
@@ -10,37 +10,50 @@ class QRCodeScanner extends StatefulWidget {
 }
 
 class _QRCodeScannerState extends State<QRCodeScanner> {
-  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
-  Barcode? result;
-  QRViewController? controller;
-  // ignore: unused_field
-  Future<void>? _launched;
+  final MobileScannerController controller = MobileScannerController();
+
+  String? scannedCode;
+  bool isProcessing = false;
 
   @override
   void dispose() {
-    controller!.dispose();
+    controller.dispose();
     super.dispose();
   }
 
   @override
   void reassemble() {
     super.reassemble();
-    if (controller != null) {
-      controller!.pauseCamera();
-      controller!.resumeCamera();
-    }
+    controller.stop();
+    controller.start();
   }
 
-  void onQRCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData;
-        print(result!.code);
-        final uri = Uri.parse(result!.code!);
-        print(uri);
-        _launchInBrowserView(uri);
-      });
+  void _onDetect(BarcodeCapture capture) async {
+    if (isProcessing) return;
+
+    final Barcode? barcode =
+    capture.barcodes.isNotEmpty ? capture.barcodes.first : null;
+
+    final String? code = barcode?.rawValue;
+
+    if (code == null) return;
+
+    setState(() {
+      scannedCode = code;
+      isProcessing = true;
+    });
+
+    try {
+      final uri = Uri.parse(code);
+      await _launchInBrowserView(uri);
+    } catch (e) {
+      debugPrint("Invalid QR or launch failed: $e");
+    }
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    setState(() {
+      isProcessing = false;
     });
   }
 
@@ -54,7 +67,10 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
   }
 
   Future<void> _launchInBrowserView(Uri url) async {
-    if (!await launchUrl(url, mode: LaunchMode.inAppBrowserView)) {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppBrowserView,
+    )) {
       throw Exception('Could not launch $url');
     }
   }
@@ -63,49 +79,55 @@ class _QRCodeScannerState extends State<QRCodeScanner> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QR'),
+        title: const Text('QR Scanner'),
       ),
       body: Column(
         children: [
           Expanded(
             flex: 4,
-            child: QRView(
-              key: qrKey,
-              onQRViewCreated: onQRCreated,
-              overlay: QrScannerOverlayShape(
-                borderColor: Colors.blue,
-                borderRadius: 10,
-                borderLength: 30,
-                borderWidth: 10,
-                cutOutSize: 300,
-              ),
+            child: Stack(
+              children: [
+                MobileScanner(
+                  controller: controller,
+                  onDetect: _onDetect,
+                ),
+
+                /// Overlay (custom replacement for QrScannerOverlayShape)
+                Center(
+                  child: Container(
+                    width: 300,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue,
+                        width: 4,
+                      ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          SizedBox(height: 30),
+
+          const SizedBox(height: 30),
+
           Center(
-            child: result != null
+            child: scannedCode != null
                 ? Text(
-                    '${result!.code}',
-                    style: TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  )
-                : Text(
-                    'Scan a code',
-                    style: TextStyle(fontSize: 18),
-                  ),
+              scannedCode!,
+              style: const TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            )
+                : const Text(
+              'Scan a code',
+              style: TextStyle(fontSize: 18),
+            ),
           ),
-          SizedBox(height: 30),
-          FutureBuilder<void>(future: _launched, builder: _launchStatus),
+
+          const SizedBox(height: 30),
         ],
       ),
     );
-  }
-
-  Widget _launchStatus(BuildContext context, AsyncSnapshot<void> snapshot) {
-    if (snapshot.hasError) {
-      return Text('Error: ${snapshot.error}');
-    } else {
-      return const Text('');
-    }
   }
 }
