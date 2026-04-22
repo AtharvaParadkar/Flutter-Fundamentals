@@ -36,6 +36,9 @@ import 'package:flutter_basics/Widgets/useremailpassauth.dart';
 import 'package:flutter_basics/listmodal/listview.dart';
 import 'package:provider/provider.dart';
 
+import 'Widgets/animated_background.dart';
+import 'enum.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen(
       {super.key});
@@ -162,6 +165,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   () => MyNavigation(context, ConcentricTransitionPage())),
               cardWidget(context, 'UPI Success Animation',
                   () => MyNavigation(context, UpiAnimation())),
+              cardWidget(context, 'Waves Animated Background',
+                  () => MyNavigation(
+                      context,
+                      AnimatedBackgroundPage(
+                          abType: BackgroundType.waves,
+                          bgColor: Colors.white,
+                          textColor: Colors.black))),
+              cardWidget(context, 'Bubbles Animated Background',
+                      () => MyNavigation(
+                      context,
+                      AnimatedBackgroundPage(
+                          abType: BackgroundType.bubbles,
+                          bgColor: Colors.white,
+                          textColor: Colors.black))),
+              cardWidget(context, 'Particles Animated Background',
+                      () => MyNavigation(
+                      context,
+                      AnimatedBackgroundPage(
+                          abType: BackgroundType.particles,
+                          bgColor: Colors.white,
+                          textColor: Colors.black))),
             ],
           ),
         ),

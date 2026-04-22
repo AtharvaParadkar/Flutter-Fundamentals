@@ -1,0 +1,1 @@
+enum BackgroundType { bubbles, waves, particles }

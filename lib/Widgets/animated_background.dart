@@ -1,18 +1,30 @@
-enum BackgroundType { bubbles, waves, particles }
+import "dart:math";
+import "package:flutter/material.dart";
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+import "../enum.dart";
+
+class AnimatedBackgroundPage extends StatelessWidget {
+  const AnimatedBackgroundPage({
+    super.key,
+    required this.abType,
+    required this.bgColor,
+    required this.textColor,
+  });
+
+  final BackgroundType abType;
+  final Color bgColor;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
       body: AnimatedBackground(
-        type: BackgroundType.particles,
-
-        child: const Center(
+        type: abType,
+        child: Center(
           child: Text(
             "Animated Background",
-            style: TextStyle(color: Colors.white, fontSize: 22),
+            style: TextStyle(color: textColor, fontSize: 22),
           ),
         ),
       ),
@@ -56,8 +68,7 @@ class WavePainter extends CustomPainter {
     final path = Path();
 
     for (double x = 0; x <= size.width; x++) {
-      final y =
-          sin((x / size.width * 2 * pi) + progress * 2 * pi) * 20 +
+      final y = sin((x / size.width * 2 * pi) + progress * 2 * pi) * 20 +
           size.height / 2;
 
       if (x == 0) {
@@ -140,7 +151,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       children: [
         AnimatedBuilder(
           animation: controller,
-          builder: (_, _) {
+          builder: (_, __) {
             switch (widget.type) {
               case BackgroundType.bubbles:
                 return CustomPaint(
